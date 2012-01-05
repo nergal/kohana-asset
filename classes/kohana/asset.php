@@ -182,12 +182,15 @@ abstract class Kohana_Asset
                 $src =  substr($src, strlen($this->_config['base_url']));
             }
 
-            $mtime = filemtime($this->_config['doc_root'].$src);
-            if ($mtime > $mostrecent) {
-                $mostrecent = $mtime;
-            }
+            $filename = $this->_config['doc_root'].$src;
+            if (file_exists($filename)) {
+                $mtime = filemtime($filename);
+                if ($mtime > $mostrecent) {
+                    $mostrecent = $mtime;
+                }
 
-            $filelist.= $src;
+                $filelist.= $src;
+            }
         }
 
         $hash = md5($filelist);
@@ -232,7 +235,10 @@ abstract class Kohana_Asset
                 $src =  substr($src, strlen($this->_config['base_url']));
             }
 
-            echo file_get_contents($this->_config['doc_root'].$src).PHP_EOL;
+            $filename = $this->_config['doc_root'].$src;
+            if (file_exists($filename)) {
+                echo file_get_contents($filename).PHP_EOL;
+            }
         }
 
         $data = ob_get_clean();
