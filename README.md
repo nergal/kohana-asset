@@ -1,0 +1,1 @@
+# [![Build Status](https://secure.travis-ci.org/nergal/kohana-asset.png)](https://secure.travis-ci.org/nergal/kohana-asset/) Модуль сбора и кэширования статики
